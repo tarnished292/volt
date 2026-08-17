@@ -6,6 +6,46 @@ It is designed to reduce the size of video and audio files while keeping quality
 
 Volt aims to provide sensible defaults for people who want smaller media files without having to understand every encoding option.
 
+## How it works
+
+Volt analyzes the input media, chooses an appropriate codec and encoding strategy, then writes an optimized media file that remains compatible with standard media players.
+
+
+![](image.png)
+
+
+## Compression trade-offs
+
+Volt aims for the best balance between speed, file size, and visual quality.
+
+```text
+                    Better compression
+                           ▲
+                           │
+                           │
+                Quality ───┼─── Size
+                           │
+                           │
+                           ▼
+                        Faster
+```
+
+Increasing compression usually reduces file size, but it can require more processing time or introduce some quality loss. Volt's default mode is intended to stay near the best balance between these trade-offs.
+
+## Codec choices
+
+Different codecs prioritize different goals.
+
+| Codec        | Encoding Speed | File Size | Compatibility |
+| ------------ | -------------- | --------- | ------------- |
+| H.264        | Very fast      | Good      | Excellent     |
+| H.265 / HEVC | Fast           | Better    | Good          |
+| AV1          | Slower         | Excellent | Growing       |
+| AAC          | Very fast      | Good      | Excellent     |
+| Opus         | Fast           | Excellent | Good          |
+
+Volt can use different codecs depending on the input media, selected mode, and available hardware acceleration.
+
 ## Goals
 
 * Fast media processing
